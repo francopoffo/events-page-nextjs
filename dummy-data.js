@@ -7,14 +7,14 @@ const DUMMY_EVENTS = [
     location: "Rua 25, 12345 Algum lugar",
     date: "2021-05-12",
     image: "images/coding-event.jpg",
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     id: "e2",
-    title: "Como economizar na cozinha",
+    title: "Economia saudável",
     description:
       "Neste evento iremos mostrar como economizar na cozinha também significa comer mais saudável.",
-    location: "Rua 93, 56789 Outro lugar",
+    location: "Rua 93, 56789 Algum lugar",
     date: "2021-05-30",
     image: "images/cooking-event.jpg",
     isFeatured: true,
