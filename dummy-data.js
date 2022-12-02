@@ -3,7 +3,7 @@ const DUMMY_EVENTS = [
     id: "e1",
     title: "Programação para todos",
     description:
-      "Todos podem aprender a codar! Sim, toda mundo! Neste evento ao vivo, vamos passar por todas as bases fundamentais e começar também o seu primeiro código.",
+      "Todos podem aprender a codar! Sim, todo mundo! Neste evento ao vivo, vamos passar por todas as bases fundamentais e começar também o seu primeiro código.",
     location: "Rua 25, 12345 Algum lugar",
     date: "2021-05-12",
     image: "images/coding-event.jpg",
