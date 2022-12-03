@@ -5,7 +5,7 @@ const DUMMY_EVENTS = [
     description:
       "Todos podem aprender a codar! Sim, todo mundo! Neste evento ao vivo, vamos passar por todas as bases fundamentais e começar também o seu primeiro código.",
     location: "Rua 25, 12345 Algum lugar",
-    date: "2021-05-12",
+    date: "12-05-2022",
     image: "images/coding-event.jpg",
     isFeatured: false,
   },
@@ -15,17 +15,17 @@ const DUMMY_EVENTS = [
     description:
       "Neste evento iremos mostrar como economizar na cozinha também significa comer mais saudável.",
     location: "Rua 93, 56789 Algum lugar",
-    date: "2021-05-30",
+    date: "05-10-2023",
     image: "images/cooking-event.jpg",
     isFeatured: true,
   },
   {
     id: "e3",
-    title: "Cinema em 2022 no Brasil",
+    title: "Cinema em 2023 no Brasil",
     description:
       "Você conhece os principais filmes feitos no Brasil em 2022? Aqui iremos conversar com envolvidos nos principais projetos do ano e conhecer um pouco mais dos bastidores.",
     location: "Rua 67, 10115 Algum outro lugar",
-    date: "2022-04-10",
+    date: "10-04-2023",
     image: "images/cinema-event.jpg",
     isFeatured: true,
   },
