@@ -7,13 +7,15 @@ function Comments(props) {
   const { eventId } = props;
 
   const [showComments, setShowComments] = useState(false);
-  use[(comments, setComments)] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     if (showComments) {
       fetch("/api/comments/" + eventId)
         .then((response) => response.json())
-        .then((data) => setComments(data.comments));
+        .then((data) => {
+          setComments(data.comments);
+        });
     }
   }, [showComments]);
 

@@ -6,11 +6,12 @@ function handler(req, res) {
 
     if (
       !email.includes("@") ||
+      !name ||
       name.trim() === "" ||
       !text ||
       text.trim() === ""
     ) {
-      res.status(422).json({ message: "Dados válidos." });
+      res.status(422).json({ message: "Invalid input." });
       return;
     }
 
@@ -22,18 +23,17 @@ function handler(req, res) {
     };
 
     console.log(newComment);
-    res
-      .status(201)
-      .json({ message: "Comentário adicionado.", comment: newComment });
+
+    res.status(201).json({ message: "Added comment.", comment: newComment });
   }
 
   if (req.method === "GET") {
-    const dummy_comments = [
-      { id: "c1", name: "Franco", comment: "Primeiro comentário" },
-      { id: "c2", name: "Foquinha", comment: "Secundo comentário" },
+    const dummyList = [
+      { id: "c1", name: "Max", text: "A first comment!" },
+      { id: "c2", name: "Manuel", text: "A second comment!" },
     ];
 
-    res.status(200).json({ comments: dummy_comments });
+    res.status(200).json({ comments: dummyList });
   }
 }
 
