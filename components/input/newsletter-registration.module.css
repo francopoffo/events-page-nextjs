@@ -1,14 +1,19 @@
 .newsletter {
   margin: 3rem auto;
-  width: 90%;
-  max-width: 20rem;
 }
 
 .newsletter h2 {
   text-align: center;
 }
 
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .control input {
+  max-width: 20rem;
+  margin: 0;
   font: inherit;
   padding: 0.25rem;
   border-radius: 4px;
