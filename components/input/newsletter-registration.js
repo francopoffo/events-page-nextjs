@@ -1,23 +1,29 @@
 import classes from "./newsletter-registration.module.css";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function NewsletterRegistration() {
   const emailInputRef = useRef();
+  const [isRegistered, setIsRegistered] = useState(false);
 
   function registrationHandler(event) {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
 
-    fetch("/api/newsletter", {
-      method: "POST",
-      body: JSON.stringify({ email: enteredEmail }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    if (enteredEmail.includes("@")) {
+      fetch("/api/newsletter", {
+        method: "POST",
+        body: JSON.stringify({ email: enteredEmail }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+
+      emailInputRef.current.value = "";
+      setIsRegistered(true);
+    }
   }
 
   return (
@@ -35,6 +41,9 @@ function NewsletterRegistration() {
           <button>Registrar</button>
         </div>
       </form>
+      {isRegistered && (
+        <p className={classes.registered}>Obrigado por se registrar!</p>
+      )}
     </section>
   );
 }
