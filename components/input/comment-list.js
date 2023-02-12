@@ -9,7 +9,7 @@ function CommentList(props) {
         <li key={item.comment._id}>
           <p>{item.comment.text}</p>
           <div>
-            By <address>{item.comment.name}</address>
+            De <address>{item.comment.name}</address>
           </div>
         </li>
       ))}

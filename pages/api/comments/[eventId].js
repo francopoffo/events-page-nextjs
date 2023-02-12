@@ -50,8 +50,6 @@ async function handler(req, res) {
       .sort({ _id: -1 })
       .toArray();
 
-    console.log(documents);
-
     res.status(200).json({ comments: documents });
   }
 
