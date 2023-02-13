@@ -3,9 +3,18 @@ import { MongoClient } from "mongodb";
 async function handler(req, res) {
   const eventId = req.query.eventId;
 
-  const client = await MongoClient.connect(
-    "mongodb+srv://francopoffo:0256514@cluster0.2dqxtja.mongodb.net/events?retryWrites=true&w=majority"
-  );
+  let client;
+
+  try {
+    client = await MongoClient.connect(
+      "mongodb+srv://francopoffo:0256514@cluster0.2dqxtja.mongodb.net/events?retryWrites=true&w=majority"
+    );
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Não foi possível se conectar a base de dados." });
+    return;
+  }
 
   if (req.method === "POST") {
     const { email, name, text } = req.body;
@@ -28,31 +37,44 @@ async function handler(req, res) {
       eventId,
     };
 
-    const db = client.db();
+    let result;
 
-    const result = await db
-      .collection("comment")
-      .insertOne({ comment: newComment });
+    try {
+      const db = client.db();
 
-    console.log(result);
+      result = await db
+        .collection("comment")
+        .insertOne({ comment: newComment });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Não foi inserir dados na base de dados" });
+      client.close();
+      return;
+    }
 
-    newComment.id = result.insertedId;
+    newComment._id = result.insertedId;
 
     res.status(201).json({ message: "Added comment.", comment: newComment });
   }
 
   if (req.method === "GET") {
-    const db = client.db();
+    try {
+      const db = client.db();
 
-    const documents = await db
-      .collection("comment")
-      .find()
-      .sort({ _id: -1 })
-      .toArray();
+      const documents = await db
+        .collection("comment")
+        .find()
+        .sort({ _id: -1 })
+        .toArray();
 
-    res.status(200).json({ comments: documents });
+      res.status(200).json({ comments: documents });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Não foi possível buscar os comentários." });
+    }
   }
-
   client.close();
 }
 
